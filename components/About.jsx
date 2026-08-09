@@ -2,8 +2,8 @@
 
 export default function About() {
   const stats = [
-    { value: "3+", label: "Years Experience" },
-    { value: "25+", label: "Projects Completed" },
+    { value: "4+", label: "Years Coding" },
+    { value: "5", label: "Projects Completed" },
     { value: "500K+", label: "Lines of Code" },
     { value: "1,200+", label: "Cups of Coffee" },
   ];

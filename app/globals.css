@@ -1148,6 +1148,39 @@ section {
   font-size: 1.05rem;
   font-weight: 600;
   color: var(--text-primary);
+}.form-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.form-label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 8px;
+  color: var(--text-primary);
+}
+
+.form-control {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 8px;
+  background: rgba(22, 27, 43, 0.8);
+  border: 1px solid var(--border-glass);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  transition: var(--transition-fast);
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--accent-secondary);
+  box-shadow: 0 0 10px 0 var(--glow-secondary);
+}
+
+textarea.form-control {
+  resize: vertical;
+  min-height: 120px;
 }
 
 .form-status-banner {

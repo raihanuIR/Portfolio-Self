@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 
 export default function Hero() {
-  const words = ["Frontend Developer", "React.js Developer", "Next.js Specialist", "UI/UX Enthusiast"];
+  const words = ["Frontend Developer", "React.js Developer", "Problem Solver", "UI/UX Enthusiast"];
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [displayedText, setDisplayedText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
