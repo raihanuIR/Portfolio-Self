@@ -10,15 +10,15 @@ export default function Projects() {
   const projectsData = [
     {
       id: 1,
-      name: "Aetheria AI - Analytics Dashboard",
-      shortDesc: "A high-performance real-time analytics dashboard with interactive data plotting, drag-and-drop metrics, and automated report summaries.",
-      description: "Aetheria AI is a comprehensive enterprise dashboard that visualizes customer engagement patterns, sales funnels, and real-time server health metrics. It provides drag-and-drop widgets, custom date-range queries, and interactive reporting tools to help modern SaaS companies monitor operations.",
-      challenges: "Handling real-time database state refreshes at high frequencies caused significant browser main-thread frame drops. We resolved this by batching WebSocket payload updates, implementing React.memo across critical list rendering nodes, and shifting data computations to a dedicated Web Worker.",
-      improvements: "Integrate Next.js Server Components for faster initial data fetching, support offline caching with Service Workers, and implement automated weekly PDF email summaries.",
-      tech: ["React.js", "Next.js", "Chart.js", "Node.js", "Express", "MongoDB"],
+      name: "BBuddy - Mobile Inventory & Shop Management",
+      shortDesc: "A high-performance React Native mobile app for inventory control, POS billing, and real-time business reports, built with Expo and TypeScript.",
+      description: "BBuddy is a streamlined mobile platform designed for unified inventory control, POS invoicing, and business analytics. It features specialized multi-store configurations tailored for general retail, pharmacies, and fashion shops. Built with React Native, Expo, and TypeScript, it delivers native safe-boundary rendering, clean safe area navigations, and automated stock indicators.",
+      challenges: "Ensuring smooth rendering of large inventory catalogs and maintaining fast invoice PDF calculations on low-end mobile hardware. We resolved this by leveraging FlatList rendering optimizations, lazy loading catalog screens, and separating invoice PDF generation loops from the main navigation UI states.",
+      improvements: "Support local SQLite offline database syncing, integrate mobile camera barcode/QR scanning APIs, and support Bluetooth thermal printer printing for instant customer physical bills.",
+      tech: ["React Native", "Expo", "TypeScript", "React Navigation"],
       image: "/project1.png",
-      gitLink: "https://github.com/raihanulislam/aetheria-ai-client",
-      liveLink: "https://aetheria-ai.example.com",
+      gitLink: "https://github.com/raihanuIR/BBUDDY",
+      liveLink: "",
     },
     {
       id: 2,
