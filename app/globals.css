@@ -379,7 +379,7 @@ section {
 .nav-mobile-drawer {
   position: fixed;
   top: 0;
-  right: -100%;
+  right: 0;
   width: 80%;
   max-width: 300px;
   height: 100vh;
@@ -391,11 +391,11 @@ section {
   flex-direction: column;
   padding: 100px 32px 40px;
   box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+  transform: translateX(100%); /* hidden off-screen to the right */
 }
 
 .nav-mobile-drawer.open {
-  transform: translateX(-125%); /* slides in based on absolute positioning */
-  right: 0;
+  transform: translateX(0); /* slides in cleanly */
 }
 
 .nav-mobile-links {
