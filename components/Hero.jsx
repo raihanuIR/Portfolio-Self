@@ -94,7 +94,7 @@ export default function Hero() {
             <div className="profile-image-pulse pulse-2"></div>
             <div className="image-wrapper">
               <Image
-                src="/profile.png"
+                src="/profile_raihanul.png"
                 alt="Raihanul Islam profile photo"
                 width={320}
                 height={320}

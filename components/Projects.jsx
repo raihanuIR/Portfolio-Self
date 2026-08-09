@@ -16,7 +16,7 @@ export default function Projects() {
       challenges: "Ensuring smooth rendering of large inventory catalogs and maintaining fast invoice PDF calculations on low-end mobile hardware. We resolved this by leveraging FlatList rendering optimizations, lazy loading catalog screens, and separating invoice PDF generation loops from the main navigation UI states.",
       improvements: "Support local SQLite offline database syncing, integrate mobile camera barcode/QR scanning APIs, and support Bluetooth thermal printer printing for instant customer physical bills.",
       tech: ["React Native", "Expo", "TypeScript", "React Navigation"],
-      image: "/project1.png",
+      image: "/project1_bbuddy.png",
       gitLink: "https://github.com/raihanuIR/BBUDDY",
       liveLink: "",
     },
