@@ -1,31 +1,43 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import Image from "next/image";
 
 export default function ProjectModal({ project, onClose }) {
   // Close modal on ESC key press and disable page scrolling
+  const closeBtnRef = useRef(null);
+  const onCloseRef = useRef(onClose);
+
   useEffect(() => {
+    onCloseRef.current = onClose;
+  });
+
+  useEffect(() => {
+    const previouslyFocused = document.activeElement;
+    const previousOverflow = document.body.style.overflow;
+    closeBtnRef.current?.focus();
+
     const handleKeyDown = (e) => {
-      if (e.key === "Escape") onClose();
+      if (e.key === "Escape") onCloseRef.current();
     };
-    
+
     document.body.style.overflow = "hidden";
     window.addEventListener("keydown", handleKeyDown);
-    
+
     return () => {
-      document.body.style.overflow = "unset";
+      document.body.style.overflow = previousOverflow;
       window.removeEventListener("keydown", handleKeyDown);
+      previouslyFocused?.focus?.();
     };
-  }, [onClose]);
+  }, []);
 
   if (!project) return null;
 
   return (
     <div className="modal-overlay" onClick={onClose}>
-      <div className="modal-container glass-card" onClick={(e) => e.stopPropagation()}>
+      <div className="modal-container glass-card" role="dialog" aria-modal="true" aria-label={project.name} onClick={(e) => e.stopPropagation()}>
         {/* Close Button */}
-        <button className="modal-close-btn" onClick={onClose} aria-label="Close modal">
+        <button ref={closeBtnRef} className="modal-close-btn" onClick={onClose} aria-label="Close modal">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
             <line x1="18" y1="6" x2="6" y2="18" />
             <line x1="6" y1="6" x2="18" y2="18" />

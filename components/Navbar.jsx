@@ -2,40 +2,45 @@
 
 import { useState, useEffect } from "react";
 
+const sectionIds = ["home", "about", "skills", "timeline", "projects", "contact"];
+
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
 
-  // Track scroll for background change and active section highlighting
+  // Scroll state for the navbar background
   useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
-
-      // Track active section on scroll
-      const sections = ["home", "about", "skills", "timeline", "projects", "contact"];
-      const scrollPosition = window.scrollY + 120; // offset
-
-      for (const section of sections) {
-        const el = document.getElementById(section);
-        if (el) {
-          const top = el.offsetTop;
-          const height = el.offsetHeight;
-          if (scrollPosition >= top && scrollPosition < top + height) {
-            setActiveSection(section);
-            break;
-          }
-        }
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
+    const handleScroll = () => setScrolled(window.scrollY > 50);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Highlight the section crossing the upper part of the viewport
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActiveSection(entry.target.id);
+        });
+      },
+      { rootMargin: "-20% 0px -70% 0px" }
+    );
+    sectionIds.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+    return () => observer.disconnect();
+  }, []);
+
+  // Close the mobile drawer on Escape
+  useEffect(() => {
+    if (!isOpen) return;
+    const onKey = (e) => e.key === "Escape" && setIsOpen(false);
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [isOpen]);
 
   const navLinks = [
     { label: "Home", href: "#home", id: "home" },
@@ -65,7 +70,7 @@ export default function Navbar() {
             </a>
           ))}
           <a href="#contact" className="btn btn-primary nav-cta-btn">
-            Let's Talk
+            Let&apos;s Talk
           </a>
         </nav>
 
@@ -74,6 +79,8 @@ export default function Navbar() {
           className={`nav-mobile-toggle ${isOpen ? "open" : ""}`}
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Toggle menu"
+          aria-expanded={isOpen}
+          aria-controls="mobile-drawer"
         >
           <span className="bar"></span>
           <span className="bar"></span>
@@ -82,7 +89,7 @@ export default function Navbar() {
       </div>
 
       {/* Mobile Menu Drawer */}
-      <div className={`nav-mobile-drawer ${isOpen ? "open" : ""}`}>
+      <div id="mobile-drawer" className={`nav-mobile-drawer ${isOpen ? "open" : ""}`}>
         <nav className="nav-mobile-links">
           {navLinks.map((link) => (
             <a
@@ -99,7 +106,7 @@ export default function Navbar() {
             className="btn btn-primary mobile-cta-btn"
             onClick={() => setIsOpen(false)}
           >
-            Let's Talk
+            Let&apos;s Talk
           </a>
         </nav>
       </div>

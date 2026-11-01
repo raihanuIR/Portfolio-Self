@@ -22,27 +22,27 @@ export default function Projects() {
     },
     {
       id: 2,
-      name: "SunCart - Summer Essentials Store",
-      shortDesc: "A modern summer essentials e-commerce application featuring secure credentials & Google OAuth authentication, and dynamic database syncing.",
-      description: "SunCart is a premium e-commerce platform built with Next.js (App Router) to browse and manage summer items. It leverages Tailwind CSS v4 and DaisyUI v5 for high-fidelity styling. User credentials are secured using Better-Auth (credentials & Google OAuth), and MongoDB Atlas serves as the persistence engine.",
-      challenges: "Integrating session adapters (Better-Auth) within Next.js Server Components while maintaining fast, static-optimized load speeds. We resolved this by creating optimized adapter helpers, managing token session caches, and fine-tuning MongoDB connection pooling to prevent serverless function timeouts.",
-      improvements: "Integrate Stripe payment gateways, implement shopping cart slide-drawers with local storage synchronization, and build an admin dashboard panel for direct catalog inventory control.",
-      tech: ["Next.js", "Tailwind CSS", "Better-Auth", "MongoDB", "TypeScript"],
-      image: "/project2_suncart.png",
-      gitLink: "https://github.com/raihanuIR/SunCart",
-      liveLink: "https://sun-cart-eta.vercel.app/",
+      name: "DailyVet AI - Veterinary Assistant & Farm Intelligence",
+      shortDesc: "An AI veterinary assistant combined with NASA satellite data for heat-stress, forage and disease-outbreak alerts, built Bangla-first for livestock farmers.",
+      description: "DailyVet is an AI and NASA-satellite powered farm intelligence suite built for livestock farmers in Bangladesh, created for the NASA Space Apps Challenge 2026. The core app offers an AI vet chat, feed advisor, breed detection, prescription scanning and pharma search. A climate suite adds species-specific heat-stress (THI) alerts, a forage rotation advisor, disease outbreak risk scoring, population impact mapping, and an interactive Leaflet risk map of all eight divisions. It is delivered in Bangla as a PWA.",
+      challenges: "Turning raw public satellite data (NASA POWER, SEDAC) into advice farmers can act on. This meant converting temperature, humidity, rainfall and soil moisture into transparent risk scores with a clear breakdown, and presenting the results in Bangla with simple action checklists.",
+      improvements: "Integrate more NASA datasets such as SMAP soil moisture and MODIS land surface temperature, and expand the community features that connect farmers with verified vets.",
+      tech: ["AI Chat (Gemini/Groq)", "NASA POWER API", "Leaflet", "PWA", "JavaScript"],
+      image: "/project2_dailyvet.svg",
+      gitLink: "https://github.com/raihanuIR/Daily-vet-v4.0",
+      liveLink: "",
     },
     {
       id: 3,
-      name: "RaihanShop - Full-Stack E-Commerce & Dashboard",
-      shortDesc: "A modern e-commerce platform split into a static React/Vite storefront and a serverless Next.js API backend using Prisma ORM.",
-      description: "RaihanShop is a full-stack e-commerce system featuring a responsive storefront and an analytical admin dashboard. The application is divided into a fast static React/Vite frontend (supporting product filters, shopping cart, light/dark modes) and a serverless Next.js API backend using Prisma ORM to connect to SQLite/Turso database instances.",
-      challenges: "Resolving Cross-Origin Resource Sharing (CORS) credentials and managing secure JWT session synchronization across different deployment subdomains (GitHub Pages and Vercel). We solved this by implementing dynamic HTTP CORS headers configuration inside Next.js middleware handlers, supporting cookie credentials sharing, and writing custom Axios interceptor error handshakes.",
-      improvements: "Support native Webhook notification subscriptions for instant order notifications, integrate payment gateways (Stripe/SSLCommerz), and implement image upload hosting services (Cloudinary) for product catalogs.",
-      tech: ["React", "Vite", "Next.js", "Prisma ORM", "Turso", "Recharts"],
-      image: "/project3_raihanshop.png",
-      gitLink: "https://github.com/raihanuIR/Raihan---Shop",
-      liveLink: "https://raihanuir.github.io/Raihan---Shop/",
+      name: "Haven Space (RentalHub) - Property Rental Platform",
+      shortDesc: "A full-stack property rental and booking platform with Stripe payments, Firebase Google login, and role-based dashboards for tenants, owners and admins.",
+      description: "Haven Space (RentalHub) is a property rental and leasing platform built with React 18, Vite and React Router. It includes a searchable listings grid, public property detail pages, JWT and Google (Firebase) authentication, Stripe-powered reservation deposits, and separate dashboards for tenants, owners and admins with Recharts analytics. It also has a reusable UI component library and a light/dark theme, and connects to a separate REST API backend.",
+      challenges: "Designing three role-based dashboards (tenant, owner, admin) on one codebase with protected routes, and keeping a consistent design system through reusable components and design tokens across light and dark themes.",
+      improvements: "Add real-time chat between tenants and owners, map-based property search, and automated email notifications for booking status changes.",
+      tech: ["React", "Vite", "Stripe", "Firebase Auth", "Recharts", "Framer Motion"],
+      image: "/project3_haven.png",
+      gitLink: "https://github.com/raihanuIR/haven-space-client",
+      liveLink: "https://haven-space-client.vercel.app/",
     },
   ];
 
@@ -67,6 +67,7 @@ export default function Projects() {
                 alt={project.name}
                 width={400}
                 height={220}
+                sizes="(max-width: 968px) 100vw, 400px"
                 className="project-image"
               />
             </div>

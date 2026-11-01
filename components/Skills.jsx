@@ -1,5 +1,3 @@
-"use client";
-
 export default function Skills() {
   const frontendSkills = [
     { name: "React.js", level: 90 },

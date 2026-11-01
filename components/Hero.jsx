@@ -3,33 +3,38 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 
+const words = ["Frontend Developer", "React.js Developer", "Next.js Developer", "UI Engineer"];
+
 export default function Hero() {
-  const words = ["Frontend Developer", "React.js Developer", "Problem Solver", "UI/UX Enthusiast"];
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [displayedText, setDisplayedText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
-    let timer;
     const currentWord = words[currentWordIndex];
     const typingSpeed = isDeleting ? 30 : 80;
+    let delay = typingSpeed;
+    let next;
 
     if (!isDeleting && displayedText === currentWord) {
-      // Hold word before deleting
-      timer = setTimeout(() => setIsDeleting(true), 2000);
+      // Hold the finished word before deleting
+      delay = 2000;
+      next = () => setIsDeleting(true);
     } else if (isDeleting && displayedText === "") {
-      setIsDeleting(false);
-      setCurrentWordIndex((prev) => (prev + 1) % words.length);
+      next = () => {
+        setIsDeleting(false);
+        setCurrentWordIndex((prev) => (prev + 1) % words.length);
+      };
     } else {
-      timer = setTimeout(() => {
+      next = () =>
         setDisplayedText(
           isDeleting
             ? currentWord.substring(0, displayedText.length - 1)
             : currentWord.substring(0, displayedText.length + 1)
         );
-      }, typingSpeed);
     }
 
+    const timer = setTimeout(next, delay);
     return () => clearTimeout(timer);
   }, [displayedText, isDeleting, currentWordIndex]);
 
@@ -43,11 +48,11 @@ export default function Hero() {
         <div className="hero-text-content">
           <span className="hero-greeting">Welcome to my space</span>
           <h1 className="hero-name">
-            Hi, I'm <span className="highlight-text">Raihanul Islam</span>
+            Hi, I&apos;m <span className="highlight-text">Raihanul Islam</span>
           </h1>
           <h2 className="hero-designation">
             I am a <span className="typing-text">{displayedText}</span>
-            <span className="cursor">|</span>
+            <span className="cursor" aria-hidden="true">|</span>
           </h2>
           <p className="hero-description">
             I craft clean, high-performance web applications with exceptional user interfaces. Specializing in modern JavaScript frameworks, responsive layouts, and modern design systems.

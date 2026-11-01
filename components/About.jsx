@@ -1,10 +1,8 @@
-"use client";
-
 export default function About() {
   const stats = [
     { value: "4+", label: "Years Coding" },
-    { value: "5", label: "Projects Completed" },
-    { value: "500K+", label: "Lines of Code" },
+    { value: "5", label: "Projects Built" },
+    { value: "∞", label: "Curiosity & Learning" },
     { value: "1,200+", label: "Cups of Coffee" },
   ];
 
@@ -15,7 +13,7 @@ export default function About() {
       <div className="section-header">
         <h2 className="section-title">About Me</h2>
         <p className="section-subtitle">
-          Discover my background, my journey into the software engineering world, and what keeps me motivated outside of code.
+          My background, how I got into web development, and what keeps me motivated outside of code.
         </p>
       </div>
 
@@ -24,13 +22,13 @@ export default function About() {
         <div className="about-column glass-card p-large">
           <h3 className="column-title">My Coding Journey</h3>
           <p className="about-text">
-            My programming journey started back in high school when I first created a basic HTML page. That simple "Hello World" screen sparked a curiosity that defined my career path. I went on to study Computer Science, where I fell in love with database structures, algorithm optimization, and web architectures.
+            My programming journey started back in high school when I first created a basic HTML page. That simple &ldquo;Hello World&rdquo; screen sparked a curiosity that defined my career path. I went on to study Computer Science, where I fell in love with database structures, algorithm optimization, and web architectures.
           </p>
           <p className="about-text">
-            Over the years, I transitioned from basic scripts to full-stack engineering, finding my sweet spot in building complex web applications. I enjoy building things that live on the internet, whether that be websites, applications, or anything in between. My goal is always to build products that provide pixel-perfect user interfaces with efficient, modular backend architectures.
+            Since then I have moved from basic scripts to building complete web applications, with my sweet spot in the frontend. I enjoy building things that live on the internet, and my goal is always to deliver polished, responsive interfaces backed by clean, modular code.
           </p>
           <p className="about-text font-italic">
-            "I write code not just to solve problems, but to build experiences that feel alive and intuitive."
+            &ldquo;I write code not just to solve problems, but to build experiences that feel alive and intuitive.&rdquo;
           </p>
         </div>
 
@@ -41,7 +39,7 @@ export default function About() {
             I thrive in collaborative team environments, writing readable, self-documenting code. I have a deep appreciation for the power of clean styles, state management, and modern component systems. Building optimized Next.js pages and rendering responsive CSS layouts is what I look forward to every day.
           </p>
           <p className="about-text">
-            Outside of software engineering, I maintain a balanced lifestyle by exploring creative outlets. I am an amateur <strong>oil painter</strong> (focusing on abstract landscapes), which keeps my visual design eye sharp. I also enjoy <strong>soccer</strong> (playing weekly in a local amateur league), <strong>esports gaming</strong> (competitive strategy games), and the craft of <strong>specialty coffee brewing</strong>.
+            Outside of software engineering, I enjoy creative and active outlets such as <strong>painting</strong>, which keeps my visual design eye sharp, <strong>sports</strong>, <strong>gaming</strong>, and <strong>coffee brewing</strong>.
           </p>
 
           <div className="hobbies-tags">

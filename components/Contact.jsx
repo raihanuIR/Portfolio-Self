@@ -2,6 +2,10 @@
 
 import { useState } from "react";
 
+const CONTACT_EMAIL = "raihanul409@gmail.com";
+// Set NEXT_PUBLIC_FORM_ENDPOINT (e.g. https://formspree.io/f/xxxx) to deliver messages directly
+const FORM_ENDPOINT = process.env.NEXT_PUBLIC_FORM_ENDPOINT;
+
 export default function Contact() {
   const [formData, setFormData] = useState({ name: "", email: "", subject: "", message: "" });
   const [errors, setErrors] = useState({});
@@ -33,22 +37,34 @@ export default function Contact() {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!validate()) return;
 
     setIsSubmitting(true);
     setSubmitStatus(null);
 
-    // Mock API Submission
-    setTimeout(() => {
-      setIsSubmitting(false);
+    try {
+      if (FORM_ENDPOINT) {
+        const res = await fetch(FORM_ENDPOINT, {
+          method: "POST",
+          headers: { "Content-Type": "application/json", Accept: "application/json" },
+          body: JSON.stringify(formData),
+        });
+        if (!res.ok) throw new Error("Request failed");
+      } else {
+        // No form service configured: open the visitor's email app with the message prefilled
+        const subject = formData.subject.trim() || `Portfolio message from ${formData.name}`;
+        const body = `${formData.message}\n\n${formData.name}\n${formData.email}`;
+        window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      }
       setSubmitStatus("success");
       setFormData({ name: "", email: "", subject: "", message: "" });
-      
-      // Auto-hide success message after 5 seconds
-      setTimeout(() => setSubmitStatus(null), 5000);
-    }, 1500);
+    } catch {
+      setSubmitStatus("error");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -122,7 +138,13 @@ export default function Contact() {
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: "8px" }}>
                 <polyline points="20 6 9 17 4 12" />
               </svg>
-              Message sent successfully! Thank you.
+              {FORM_ENDPOINT ? "Message sent successfully! Thank you." : "Your email app should now open with the message ready to send."}
+            </div>
+          )}
+
+          {submitStatus === "error" && (
+            <div className="form-status-banner banner-error" role="alert">
+              Something went wrong. Please email me directly at {CONTACT_EMAIL}.
             </div>
           )}
 
